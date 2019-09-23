@@ -1,0 +1,44 @@
+
+
+<html>
+<head>
+  <script src="jquery.js">
+  </script>
+  <script>
+  //  var counter=0;
+
+    function meiseFliegt(){
+      $("#Input").val("");
+      var  randomX=Math.floor(Math.random()*10);
+      var randomY = Math.floor(Math.random()*10);
+      $("#MeisenBild").css("margin-left",randomX*70);
+    //  $("#MeisenBild").css("width","100pt");
+      $("#MeisenBild").css("margin-top",randomY*70);
+
+      $("#Input").focus();
+      $("#Input").keydown(function(e){
+        if (e.keyCode == 13 ){
+          var eingabeText ="";
+          eingabeText=  $("#Input").val();
+
+        if((parseInt(eingabeText.substring(0,1))==randomX)&&(parseInt(eingabeText.substring(2,3))==(10-randomY))){
+          $(".test").text(" Die x-Koordinate und y-Koordinate sind richtig! Lösung: " + randomX + " / " + (10-randomY)+ "");
+        }else{$(".test").text("falsch!");}
+        }
+      });
+    }
+  </script>
+</head>
+<body style="background:url('koordinatengitter.png'); background-repeat: no-repeat;background-size:600pt;overflow:hidden">
+<div style="height:600pt">
+<div>
+  <img id="MeisenBild" src="meise.png" style="width:60pt;display:relative"></img>
+</div>
+</div>
+<button onclick="meiseFliegt()">Flieg, kleine Meise!</button>
+<input id="Input" type="text"> </input>
+</body>
+<div class="test">
+  </div>
+
+</html>
