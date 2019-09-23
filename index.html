@@ -6,16 +6,18 @@
   <script>
   //  var counter=0;
 
-
+var counter=0;
 
 
     function meiseFliegt(){
+
+      $(".test").delay(700).fadeOut(1000);
       $("#Input").val("");
-      var  randomX=Math.floor(Math.random()*10);
-      var randomY = Math.floor(Math.random()*10);
+      var  randomX=Math.floor(Math.random()*9);
+      var randomY = Math.floor(Math.random()*9);
       $("#MeisenBild").css("margin-left",randomX*70);
     //  $("#MeisenBild").css("width","100pt");
-      $("#MeisenBild").css("margin-top",randomY*70);
+      $("#MeisenBild").css("margin-top",10*70 - randomY*70);
 
       $("#Input").focus();
       $("#Input").keydown(function(e){
@@ -23,9 +25,14 @@
           var eingabeText ="";
           eingabeText=  $("#Input").val();
 
-        if((parseInt(eingabeText.substring(0,1))==randomX)&&(parseInt(eingabeText.substring(2,3))==(10-randomY))){
-          $(".test").html("<p style='color:green'> Beide Koordinaten sind richtig! <p> Lösung: " + randomX + " / " + (10-randomY)+ "");
-        }else{$(".test").text("falsch!");}
+        if((parseInt(eingabeText.substring(0,1))==randomX)&&(eingabeText.substring(1,2)=="/")&&(parseInt(eingabeText.substring(2,3))==(randomY))){
+          $(".test").html("<p style='color:green'> Beide Koordinaten sind richtig! <p> Lösung: " + randomX + " / " + (randomY)+ "");
+          $(".test").show();
+          counter++;
+          $(".score").text(counter);
+          meiseFliegt();
+        }else{$(".test").text("falsch! Tipp: Gib erst die Zahl an, wie weit die Meise vom Ursprung nach rechts verschoben ist, dann einen Schrägstrich / und dann eine Zahl die angibt, wie hoch die Meise fliegt");
+      $(".test").show();}
         }
       });
     }
@@ -34,14 +41,15 @@
 </head>
 <body onload="meiseFliegt()" style="background:url('koordinatengitter.png'); background-repeat: no-repeat;background-size:600pt;overflow:hidden">
 <div style="height:600pt">
-<div>
   <img id="MeisenBild" src="meise.png" style="width:60pt;display:relative"></img>
 </div>
+<div  style="width:600pt;display:grid;grid-template-columns: 50% 50%">
+  <input id="Input" type="text" style="width:220pt;height:60pt;font-size:30pt"> </input>
+  <div class="score" style="border-radius:15pt;padding:5pt;background-color:white;font-size:30pt;width:60pt"></div>
 </div>
-<button style="width:220pt;height:60pt;font-size:20pt" onclick="meiseFliegt()">Flieg, kleine Meise!</button>
-<input id="Input" type="text" style="width:220pt;height:60pt;font-size:30pt"> </input>
 <div class="test" style="font-size:30pt">
   </div>
+
 </body>
 
 
