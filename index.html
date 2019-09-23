@@ -6,14 +6,7 @@
   <script>
   //  var counter=0;
 
-function flieg(){
-  var  randomX=Math.floor(Math.random()*10);
-  var randomY = Math.floor(Math.random()*10);
-  $("#MeisenBild").css("margin-left",randomX*70);
-//  $("#MeisenBild").css("width","100pt");
-  $("#MeisenBild").css("margin-top",randomY*70);
 
-}
 
 
     function meiseFliegt(){
@@ -39,7 +32,7 @@ function flieg(){
 
   </script>
 </head>
-<body onload="flieg()" style="background:url('koordinatengitter.png'); background-repeat: no-repeat;background-size:600pt;overflow:hidden">
+<body onload="meiseFliegt()" style="background:url('koordinatengitter.png'); background-repeat: no-repeat;background-size:600pt;overflow:hidden">
 <div style="height:600pt">
 <div>
   <img id="MeisenBild" src="meise.png" style="width:60pt;display:relative"></img>
