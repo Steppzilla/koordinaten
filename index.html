@@ -5,7 +5,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script>
   //  var counter=0;
-flieg();
 
 function flieg(){
   var  randomX=Math.floor(Math.random()*10);
@@ -40,7 +39,7 @@ function flieg(){
 
   </script>
 </head>
-<body style="background:url('koordinatengitter.png'); background-repeat: no-repeat;background-size:600pt;overflow:hidden">
+<body onload="flieg()" style="background:url('koordinatengitter.png'); background-repeat: no-repeat;background-size:600pt;overflow:hidden">
 <div style="height:600pt">
 <div>
   <img id="MeisenBild" src="meise.png" style="width:60pt;display:relative"></img>
